@@ -1,0 +1,267 @@
+﻿<Window x:Class="QuanLyKho.ManagerWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Manager Window"
+        xmlns:uc="clr-namespace:QuanLyKho.UserControlKho"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Name="managerWindow"
+        WindowState="Maximized"
+        
+        >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Name="MenuManager" Grid.Row="0">
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Các lựa chọn-->
+                <Grid Grid.Row="0">
+                    <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" >
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="2 2 2 2"></Setter>
+                                <Setter Property="Width" Value="80"></Setter>
+                                <Setter Property="Height" Value="80"></Setter>
+
+                            </Style>
+                        </StackPanel.Resources>
+                        <!--Khách hàng-->
+                        <Button ToolTip="Customer" Name="btn_Cus" Click="btn_Cus_Click" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Customer" Height="16" VerticalAlignment="Top">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="HumanMaleFemale" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <!--các mặt hàng-->
+                        <Button ToolTip="Goods" Name="btn_Item" Click="btn_Item_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Goods">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="NaturePeople" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+
+                        </Button>
+
+                        <!--Nhập phiếu nhập hàng-->
+                        <Button ToolTip="Input" Name="btn_Input" Click="btn_Input_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Input">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="ArrowRightBoldBox" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+                        <!--Nhập phiếu xuất hàng-->
+                        <Button ToolTip="Output" Name="btn_Output" Click="btn_Output_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Output">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="ArrowLeftBoldBox" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        
+                        <!--Tồn kho-->
+                        <Button ToolTip="Inventory" Name="btn_Inventory" Click="btn_Inventory_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Inventory">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="ArrowLeftBoldBox" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+                        <!--Bảng kê nhập hàng-->
+                        <Button ToolTip="Received docket" Name="btn_ReceivedDocket" Click="btn_ReceivedDocket_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Received docket">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="ArrowLeftBoldBox" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+
+                        <!--Bảng kê xuất hàng-->
+                        <Button ToolTip="Delivery slip" Name="btn_DeliverySlip" Click="btn_DeliverySlip_Click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Delivery slip">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="ArrowLeftBoldBox" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+                        <!--Thêm tài khoản nhân viên-->
+                        <Button ToolTip="Add Acount">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Add Account">
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="NaturePeople" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+                        <!--<Button ToolTip="In Stock">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="In Stock">
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Kind="NaturePeople" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+                    </Button>-->
+
+                        <!--Tìm kiếm các phiếu nhập, xuất, mặt hàng bán chạy nhất-->
+                        <Button ToolTip="Search">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="Search">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="SearchWeb" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+
+                        <!--Liên hệ với người làm phần mềm-->
+                        <Button ToolTip="About">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <TextBlock Text="About">
+
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Kind="Contacts" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                
+                <Grid Name="MainArea" Grid.Row="1">
+                    <!--<Image Source="C:\Users\15125\Desktop\FAST_project\nhân viên.jpg"  Margin="4 4 4 8 "/>-->
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

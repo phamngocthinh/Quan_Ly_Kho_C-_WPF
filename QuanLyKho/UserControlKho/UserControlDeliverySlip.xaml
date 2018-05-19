@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="QuanLyKho.UserControlKho.UserControlDeliverySlip"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <materialDesign:Card>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid  Grid.Column="0">
+                                <DatePicker  Width="200" materialDesign:HintAssist.Hint="Từ ngày" Name="BeginDate" 
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                 VerticalAlignment="Center"  Height="40" Margin=" 0 20 0 5" Background="PaleGreen" FontSize="18"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <DatePicker Width="200" materialDesign:HintAssist.Hint="Đến ngày" Name="FinishDate"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                 VerticalAlignment="Center" Height="40" Margin=" 0 20 0 5" Background="Orange" FontSize="18"/>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Name="accept" Click="accept_Click"
+                                    ToolTip="MaterialDesignFlatButton">
+                                    ACCEPT
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+                    </materialDesign:Card>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <ListView Name="DeliverySlip" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding MaKH}" Header="Mã Khách hàng" />
+                                <GridViewColumn DisplayMemberBinding="{Binding MaHH}" Header="Mã Hàng hóa" />
+                                <GridViewColumn DisplayMemberBinding="{Binding SoChungTu}" Header="Số chứng từ" />
+                                <GridViewColumn DisplayMemberBinding="{Binding NgayXuat}" Header="Ngày xuất" />
+                                <GridViewColumn DisplayMemberBinding="{Binding SoLuong}" Header="Số lượng" />
+                                <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá tiền" />
+                                <GridViewColumn DisplayMemberBinding="{Binding DienGiai}" Header="Diễn giải" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

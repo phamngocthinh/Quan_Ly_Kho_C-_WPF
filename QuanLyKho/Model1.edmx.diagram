@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06563bac2439418ca6c6b575ee07ae38" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKhoModel.HANGHOA" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoModel.PHIEUNHAPHANG" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoModel.PHIEUXUATHANG" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoModel.TONDAUKI" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="QLKhoModel.FK_PHIEUNHAPHANG_HANGHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhoModel.FK_PHIEUXUATHANG_HANGHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhoModel.FK_TONDAUKI_HANGHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhoModel.FK_PHIEUNHAPHANG_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhoModel.FK_PHIEUXUATHANG_KHACHHANG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="QuanLyKho.UserControlKho.UserControlBarUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             >
+
+    <Grid>
+        <materialDesign:ColorZone  Mode="PrimaryLight" MouseLeftButtonDown="ColorZone_MouseLeftButtonDown" >
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Background="Transparent" Orientation="Horizontal" >
+                    <!--<StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="2 2 2 2"></Setter>
+                            <Setter Property="Width" Value="40"></Setter>
+                        </Style>
+                    </StackPanel.Resources>-->
+                    <Button ToolTip="Zoom Out"  Click="Button_Click_1"
+                            ToolBar.OverflowMode="AsNeeded"
+                            Background="SkyBlue" 
+                          >
+                        <materialDesign:PackIcon Kind="WindowMinimize" />
+                    </Button>
+                    <Button Click="Button_Click_5" ToolTip="Zoom In" 
+                            ToolBar.OverflowMode="AsNeeded" Background="SkyBlue"
+                            >
+                        <materialDesign:PackIcon Kind="WindowMaximize"/>
+                    </Button>
+                    <Button Click="Button_Click" 
+                            ToolBar.OverflowMode="AsNeeded" Background="SkyBlue">
+                        <materialDesign:PackIcon Kind="WindowClose"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    <TextBlock VerticalAlignment="Center" Margin="16 0 0 0">
+
+                    </TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+    </Grid>
+</UserControl>

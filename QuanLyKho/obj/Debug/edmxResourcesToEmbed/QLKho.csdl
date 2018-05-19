@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLKHOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HANGHOA">
+    <Key>
+      <PropertyRef Name="MaHH" />
+    </Key>
+    <Property Name="MaHH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenHH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK_PHIEUNHAPHANG_HANGHOA" FromRole="HANGHOA" ToRole="PHIEUNHAPHANG" />
+    <NavigationProperty Name="PHIEUXUATHANGs" Relationship="Self.FK_PHIEUXUATHANG_HANGHOA" FromRole="HANGHOA" ToRole="PHIEUXUATHANG" />
+    <NavigationProperty Name="TONDAUKI" Relationship="Self.FK_TONDAUKI_HANGHOA" FromRole="HANGHOA" ToRole="TONDAUKI" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenKH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK_PHIEUNHAPHANG_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEUNHAPHANG" />
+    <NavigationProperty Name="PHIEUXUATHANGs" Relationship="Self.FK_PHIEUXUATHANG_KHACHHANG" FromRole="KHACHHANG" ToRole="PHIEUXUATHANG" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAPHANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+      <PropertyRef Name="MaHH" />
+      <PropertyRef Name="SoChungTu" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaHH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoChungTu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="DienGiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HANGHOA" Relationship="Self.FK_PHIEUNHAPHANG_HANGHOA" FromRole="PHIEUNHAPHANG" ToRole="HANGHOA" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_PHIEUNHAPHANG_KHACHHANG" FromRole="PHIEUNHAPHANG" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="PHIEUXUATHANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+      <PropertyRef Name="MaHH" />
+      <PropertyRef Name="SoChungTu" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaHH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoChungTu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NgayXuat" Type="DateTime" Precision="0" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="DienGiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HANGHOA" Relationship="Self.FK_PHIEUXUATHANG_HANGHOA" FromRole="PHIEUXUATHANG" ToRole="HANGHOA" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_PHIEUXUATHANG_KHACHHANG" FromRole="PHIEUXUATHANG" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="TONDAUKI">
+    <Key>
+      <PropertyRef Name="MaHH" />
+    </Key>
+    <Property Name="MaHH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SLTon" Type="Int32" />
+    <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="3" />
+    <NavigationProperty Name="HANGHOA" Relationship="Self.FK_TONDAUKI_HANGHOA" FromRole="TONDAUKI" ToRole="HANGHOA" />
+  </EntityType>
+  <Association Name="FK_PHIEUNHAPHANG_HANGHOA">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
+    <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MaHH" />
+      </Principal>
+      <Dependent Role="PHIEUNHAPHANG">
+        <PropertyRef Name="MaHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEUXUATHANG_HANGHOA">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
+    <End Role="PHIEUXUATHANG" Type="Self.PHIEUXUATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MaHH" />
+      </Principal>
+      <Dependent Role="PHIEUXUATHANG">
+        <PropertyRef Name="MaHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TONDAUKI_HANGHOA">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
+    <End Role="TONDAUKI" Type="Self.TONDAUKI" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MaHH" />
+      </Principal>
+      <Dependent Role="TONDAUKI">
+        <PropertyRef Name="MaHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEUNHAPHANG_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PHIEUNHAPHANG">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEUXUATHANG_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="PHIEUXUATHANG" Type="Self.PHIEUXUATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PHIEUXUATHANG">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLKHOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HANGHOAs" EntityType="Self.HANGHOA" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="PHIEUNHAPHANGs" EntityType="Self.PHIEUNHAPHANG" />
+    <EntitySet Name="PHIEUXUATHANGs" EntityType="Self.PHIEUXUATHANG" />
+    <EntitySet Name="TONDAUKIs" EntityType="Self.TONDAUKI" />
+    <AssociationSet Name="FK_PHIEUNHAPHANG_HANGHOA" Association="Self.FK_PHIEUNHAPHANG_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEUXUATHANG_HANGHOA" Association="Self.FK_PHIEUXUATHANG_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="PHIEUXUATHANG" EntitySet="PHIEUXUATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TONDAUKI_HANGHOA" Association="Self.FK_TONDAUKI_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="TONDAUKI" EntitySet="TONDAUKIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEUNHAPHANG_KHACHHANG" Association="Self.FK_PHIEUNHAPHANG_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEUXUATHANG_KHACHHANG" Association="Self.FK_PHIEUXUATHANG_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="PHIEUXUATHANG" EntitySet="PHIEUXUATHANGs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_TimKiemPhieuNhapXuatTheoSoChungTu" ReturnType="Collection(QLKHOModel.sp_TimKiemPhieuNhapXuatTheoSoChungTu_Result)">
+      <Parameter Name="sochungtu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemThongTinPhieuNhapHang" ReturnType="Collection(QLKHOModel.sp_TimKiemThongTinPhieuNhapHang_Result)">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="mahh" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiemThongTinPhieuXuatHang" ReturnType="Collection(QLKHOModel.sp_TimKiemThongTinPhieuXuatHang_Result)">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="mahh" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangNhapHang" ReturnType="Collection(QLKHOModel.sp_XuatBangNhapHang_Result)">
+      <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangNhapHangCoMaHH" ReturnType="Collection(QLKHOModel.sp_XuatBangNhapHangCoMaHH_Result)">
+      <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
+      <Parameter Name="mahh" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangXuatHang" ReturnType="Collection(QLKHOModel.sp_XuatBangXuatHang_Result)">
+      <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangXuatHangCoMaHH" ReturnType="Collection(QLKHOModel.sp_XuatBangXuatHangCoMaHH_Result)">
+      <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
+      <Parameter Name="mahh" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_TimKiemPhieuNhapXuatTheoSoChungTu_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemThongTinPhieuNhapHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_TimKiemThongTinPhieuXuatHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangNhapHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangNhapHangCoMaHH_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangXuatHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangXuatHangCoMaHH_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
