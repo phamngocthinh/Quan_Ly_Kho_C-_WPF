@@ -1,2 +1,3 @@
-﻿## Tuổi lol xem code bố
-### ThinhPham
+﻿## Phần mềm quản lý kho
+### Entity framework
+### Material Design In XAML
