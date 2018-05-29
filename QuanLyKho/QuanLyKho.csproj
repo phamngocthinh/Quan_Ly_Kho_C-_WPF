@@ -113,22 +113,10 @@
     <Compile Include="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_TimKiemThongTinPhieuNhapHang_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_TimKiemThongTinPhieuXuatHang_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="sp_TimSoLuongTonCuaHangHoa_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_XuatBangNhapHangCoMaHH_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="sp_XuatBangNhapHang_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_XuatBangXuatHangCoMaHH_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_XuatBangXuatHang_Result.cs">

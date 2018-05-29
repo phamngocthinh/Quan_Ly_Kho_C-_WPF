@@ -22,7 +22,7 @@ namespace QuanLyKho
     public partial class ManagerWindow : Window
     {
         private UserControlBarUC ManagerBar = new UserControlBarUC();
-
+        private Button curr = null;
         public ManagerWindow()
         {
             InitializeComponent();
@@ -56,14 +56,17 @@ namespace QuanLyKho
         UserControlReceivedDocket UCReceivedRocket = new UserControlReceivedDocket();
         UserControlDeliverySlip UCDeliverySlip = new UserControlDeliverySlip();
        
-
+        
     //event nhấp vào nhà cung cấp
     private void btn_Cus_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCCustomer);
-            
-            
+            if(curr != null)
+                 curr.Background = Brushes.Silver;
+            curr = btn_Cus;
+            curr.Background = Brushes.SkyBlue;
+
         }
 
         //event nhấp vào hàng hóa
@@ -71,54 +74,80 @@ namespace QuanLyKho
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCIteam);
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_Item;
+            curr.Background = Brushes.SkyBlue;
+         
         }
 
         private void btn_Input_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCInput);
-        }
-
-        private void ReMoveChildrenOfGrid(Grid grid)
-        {
-            for(int i= grid.Children.Count-1;i>=0; i--)
-            {
-                grid.Children.Remove(grid.Children[i]);
-            }
-        }
-
-        private void ReMoveBackgroudOfButton()
-        {
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_Input;
+            curr.Background = Brushes.SkyBlue;
 
         }
+
+       
 
         private void btn_Output_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCOutput);
-            
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_Output;
+            curr.Background = Brushes.SkyBlue;
+
+
         }
 
         private void btn_Inventory_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCInventory);
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_Inventory;
+            curr.Background = Brushes.SkyBlue;
+
         }
 
         private void btn_ReceivedDocket_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCReceivedRocket);
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_ReceivedDocket;
+            curr.Background = Brushes.SkyBlue;
+
         }
 
         private void btn_DeliverySlip_Click(object sender, RoutedEventArgs e)
         {
             ReMoveChildrenOfGrid(MainArea);
             MainArea.Children.Add(UCDeliverySlip);
+            if (curr != null)
+                curr.Background = Brushes.Silver;
+            curr = btn_DeliverySlip;
+            curr.Background = Brushes.SkyBlue;
+
 
         }
 
-        
+        private void ReMoveChildrenOfGrid(Grid grid)
+        {
+            for (int i = grid.Children.Count - 1; i >= 0; i--)
+            {
+                grid.Children.Remove(grid.Children[i]);
+            }
+        }
+
     }
    
 }

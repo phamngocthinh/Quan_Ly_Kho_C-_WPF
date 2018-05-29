@@ -113,6 +113,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_addCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="varchar" Mode="In" />
+    <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="varchar" Mode="In" />
+    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysinh" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_AddGoods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mahh" Type="varchar" Mode="In" />
+    <Parameter Name="tenhh" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteGoods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mahh" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_TimKiemHangHoaTheoTenHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tenhh" Type="nvarchar" Mode="In" />
   </Function>
@@ -128,34 +145,23 @@
   <Function Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tenhh" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="sp_TimKiemThongTinPhieuNhapHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makh" Type="varchar" Mode="In" />
-    <Parameter Name="mahh" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="sp_TimKiemThongTinPhieuXuatHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makh" Type="varchar" Mode="In" />
-    <Parameter Name="mahh" Type="varchar" Mode="In" />
-  </Function>
   <Function Name="sp_TimSoLuongTonCuaHangHoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="mahh" Type="nvarchar" Mode="In" />
+    <Parameter Name="mahh" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_updateCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="varchar" Mode="In" />
+    <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="varchar" Mode="In" />
+    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysinh" Type="date" Mode="In" />
   </Function>
   <Function Name="sp_XuatBangNhapHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ngaynhaphang1" Type="date" Mode="In" />
     <Parameter Name="ngaynhaphang2" Type="date" Mode="In" />
   </Function>
-  <Function Name="sp_XuatBangNhapHangCoMaHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ngaynhaphang1" Type="date" Mode="In" />
-    <Parameter Name="ngaynhaphang2" Type="date" Mode="In" />
-    <Parameter Name="mahh" Type="varchar" Mode="In" />
-  </Function>
   <Function Name="sp_XuatBangXuatHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ngayxuathang1" Type="date" Mode="In" />
     <Parameter Name="ngayxuathang2" Type="date" Mode="In" />
-  </Function>
-  <Function Name="sp_XuatBangXuatHangCoMaHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ngayxuathang1" Type="date" Mode="In" />
-    <Parameter Name="ngayxuathang2" Type="date" Mode="In" />
-    <Parameter Name="mahh" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="QLKhoModelStoreContainer">
     <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />

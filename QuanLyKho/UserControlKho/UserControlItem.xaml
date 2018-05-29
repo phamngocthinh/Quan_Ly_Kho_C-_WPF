@@ -11,7 +11,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0 10 0 0">
+        <Grid Grid.Row="0" Margin="0 10 0 0" Name="Binding_Goods">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -21,23 +21,28 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0"  Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Text="{Binding MaHH, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
                 <Grid Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Tên hàng hóa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Tên hàng hóa" Text="{Binding TenHH, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
-
-                <Grid Grid.Column="2" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Nhà cung cấp" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    
+                <Grid  Grid.Column="2" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 -10">
+                    <ComboBox ItemsSource="{Binding Path= KhachHang}"
+    DisplayMemberPath="Name"
+    SelectedValuePath="Name"
+    SelectedValue="{Binding Path= TenKH}" />
+                    <TextBox Text="{Binding Path=TenKH}"></TextBox>
+                    <!--<TextBox materialDesign:HintAssist.Hint="Nhà cung cấp" Text="{Binding TenKH, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="37" VerticalAlignment="Top" />-->
                 </Grid>
 
 
                 <Grid Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Giá tiền" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Giá" Text="{Binding GiaTien, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
                 
@@ -57,7 +62,7 @@
                     <Button Style="{DynamicResource MaterialDesignToolButton}" Name="btn_searchGoods" Click="btn_searchGoods_Click">
                         <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
                     </Button>
-                    <TextBox Width="auto" Grid.Column="1" Margin="40,0,0,8" materialDesign:HintAssist.Hint="Tìm kiếm hàng hóa bằng tên.." 
+                    <TextBox IsTabStop="True" KeyboardNavigation.TabIndex="1" Width="auto" Grid.Column="1" Margin="40,0,0,8" materialDesign:HintAssist.Hint="Tìm kiếm hàng hóa bằng tên.." 
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
                                      MinWidth="200" VerticalAlignment="Center" Grid.ColumnSpan="2" Name="tb_Goods" />
                     <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" >
@@ -67,7 +72,7 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Grid.Row="2" Margin="0 10 0 0">
-            <ListView Name="HangHoa" ItemsSource="{Binding}">
+            <ListView Name="Goods" SelectionChanged="Goods_SelectionChanged" ItemsSource="{Binding Mode=OneWay}" ItemContainerStyle="{StaticResource alternatingStyle}" BorderBrush="Red" AlternationCount="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding MaHH}" Header="Mã Hàng hóa" />

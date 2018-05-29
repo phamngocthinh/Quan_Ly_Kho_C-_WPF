@@ -85,5 +85,11 @@ namespace QuanLyKho.UserControlKho
 
             Inventory.ItemsSource = search.sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH(tenhhh);
         }
+
+        private void Inventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object t = Inventory.SelectedItem;
+            Binding_Inv.DataContext = t;
+        }
     }
 }

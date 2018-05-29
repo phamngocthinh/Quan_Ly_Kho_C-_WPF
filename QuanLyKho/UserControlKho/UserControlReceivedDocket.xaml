@@ -49,7 +49,7 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <ListView Name="ReceivedDocket" >
+                    <ListView Name="ReceivedDocket"  ItemsSource="{Binding}" ItemContainerStyle="{StaticResource alternatingStyle}" BorderBrush="Red" AlternationCount="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding MaKH}" Header="Mã Khách hàng" />
@@ -57,7 +57,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding SoChungTu}" Header="Số chứng từ" />
                                 <GridViewColumn DisplayMemberBinding="{Binding NgayNhap}" Header="Ngày nhập" />
                                 <GridViewColumn DisplayMemberBinding="{Binding SoLuong}" Header="Số lượng" />
-                                <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá tiền" />
+                                <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá" />
                                 <GridViewColumn DisplayMemberBinding="{Binding DienGiai}" Header="Diễn giải" />
                             </GridView>
                         </ListView.View>

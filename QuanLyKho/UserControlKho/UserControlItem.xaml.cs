@@ -30,7 +30,7 @@ namespace QuanLyKho.UserControlKho
         {
             using (QLKhoEntities db = new QLKhoEntities())
             {
-                HangHoa.ItemsSource = db.HANGHOAs.ToList<HANGHOA>();
+                Goods.ItemsSource = db.HANGHOAs.ToList<HANGHOA>();
             }
         }
 
@@ -49,7 +49,7 @@ namespace QuanLyKho.UserControlKho
                                    TenKH= cust.TenKH,
                                    GiaTien= xxx.GiaTien,
                                }).ToList();
-                HangHoa.ItemsSource = details;
+                Goods.ItemsSource = details;
             }
         }
 
@@ -71,7 +71,13 @@ namespace QuanLyKho.UserControlKho
                                GiaTien = xxx.GiaTien,
 
                            }).ToList();
-            HangHoa.ItemsSource = details;
+            Goods.ItemsSource = details;
+        }
+
+        private void Goods_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object t = Goods.SelectedItem;
+            Binding_Goods.DataContext = t;
         }
     }
 }

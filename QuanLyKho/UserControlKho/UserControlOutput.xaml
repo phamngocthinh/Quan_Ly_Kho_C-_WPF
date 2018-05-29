@@ -11,7 +11,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0 10 0 0">
+        <Grid Grid.Row="0" Margin="0 10 0 0" Name="Binding_Output">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -24,35 +24,35 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0"  Width="150" HorizontalAlignment="Left" Margin="10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Mã khách hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Mã khách hàng" Text="{Binding MaKH}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
                 <Grid Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin=" 10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Text="{Binding MaHH}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
 
                 <Grid Grid.Column="2" Width="150" HorizontalAlignment="Left" Margin=" 10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Số chứng từ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Số chứng từ" Text="{Binding SoChungTu}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
                 <Grid Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin=" 10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Nhày xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Ngày xuất" Text="{Binding NgayXuat}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
                 <Grid Grid.Column="4" Width="150" HorizontalAlignment="Left" Margin=" 10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Số lượng" Text="{Binding SoLuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
                 <Grid Grid.Column="5" Width="150" HorizontalAlignment="Left" Margin=" 10 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Giá tiền" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Giá" Text="{Binding GiaTien}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
                 <Grid Grid.Column="6" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Diễn giải" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Diễn giải" Text="{Binding DienGiai}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="245*"/>
                 <ColumnDefinition Width="113*"/>
             </Grid.ColumnDefinitions>
-            <ListView Name="Output" ItemsSource="{Binding}" Grid.ColumnSpan="2">
+            <ListView Name="Output" SelectionChanged="Output_SelectionChanged" ItemsSource="{Binding}" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource alternatingStyle}" BorderBrush="Red" AlternationCount="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding MaKH}" Header="Mã Khách hàng" />
@@ -94,7 +94,7 @@
                         <GridViewColumn DisplayMemberBinding="{Binding SoChungTu}" Header="Số chứng từ" />
                         <GridViewColumn DisplayMemberBinding="{Binding NgayXuat}" Header="Ngày xuất" />
                         <GridViewColumn DisplayMemberBinding="{Binding SoLuong}" Header="Số lượng" />
-                        <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá tiền" />
+                        <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá" />
                         <GridViewColumn DisplayMemberBinding="{Binding DienGiai}" Header="Diễn giải" />
                     </GridView>
                 </ListView.View>

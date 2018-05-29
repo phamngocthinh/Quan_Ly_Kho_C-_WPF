@@ -12,7 +12,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0 10 0 0">
+        <Grid Grid.Row="0" Margin="0 10 0 0" Name="Binding_Inv">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -22,23 +22,23 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0"  Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Mã hàng hóa" Text="{Binding MaHH, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
                 <Grid Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Tên hàng hóa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Tên hàng hóa" Text="{Binding TenHH, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
 
                 <Grid Grid.Column="2" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Số lượng tồn" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Số lượng tồn" Text="{Binding SLTon, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
                 <Grid Grid.Column="3" Width="150" HorizontalAlignment="Left" Margin=" 20 0 0 0">
-                    <TextBox materialDesign:HintAssist.Hint="Giá tiền" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox materialDesign:HintAssist.Hint="Giá" Text="{Binding GiaTien, Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
 
 
@@ -68,13 +68,13 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Grid.Row="2">
-            <ListView Name="Inventory" ItemsSource="{Binding}">
-                <ListView.View>
+            <ListView Name="Inventory"  SelectionChanged="Inventory_SelectionChanged" ItemsSource="{Binding}" ItemContainerStyle="{StaticResource alternatingStyle}" BorderBrush="Red" AlternationCount="2">
+                <ListView.View >
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding MaHH}" Header="Mã Hàng hóa" />
                         <GridViewColumn DisplayMemberBinding="{Binding TenHH}" Header="Tên hàng hóa" />
                         <GridViewColumn DisplayMemberBinding="{Binding SLTon}" Header="Số lượng tồn" />
-                        <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá tiền" />
+                        <GridViewColumn DisplayMemberBinding="{Binding GiaTien}" Header="Giá" />
                         
                     </GridView>
                 </ListView.View>

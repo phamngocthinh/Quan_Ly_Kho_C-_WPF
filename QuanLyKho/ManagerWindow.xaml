@@ -14,7 +14,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Name="managerWindow"
-        WindowState="Maximized"
+        
         
         >
     <Grid >
@@ -49,7 +49,7 @@
                             </Style>
                         </StackPanel.Resources>
                         <!--Khách hàng-->
-                        <Button ToolTip="Customer" Name="btn_Cus" Click="btn_Cus_Click" >
+                        <Button ToolTip="Customer" Name="btn_Cus" Click="btn_Cus_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -61,13 +61,13 @@
 
                                     </TextBlock>
                                 </Grid>
-                                <Grid Grid.Row="1">
+                                <Grid Grid.Row="1" HorizontalAlignment="Left" Width="55">
                                     <materialDesign:PackIcon Kind="HumanMaleFemale" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 </Grid>
                             </Grid>
                         </Button>
                         <!--các mặt hàng-->
-                        <Button ToolTip="Goods" Name="btn_Item" Click="btn_Item_Click">
+                        <Button ToolTip="Goods" Name="btn_Item" Click="btn_Item_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -87,7 +87,7 @@
                         </Button>
 
                         <!--Nhập phiếu nhập hàng-->
-                        <Button ToolTip="Input" Name="btn_Input" Click="btn_Input_Click">
+                        <Button ToolTip="Input" Name="btn_Input" Click="btn_Input_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -106,7 +106,7 @@
                         </Button>
 
                         <!--Nhập phiếu xuất hàng-->
-                        <Button ToolTip="Output" Name="btn_Output" Click="btn_Output_Click">
+                        <Button ToolTip="Output" Name="btn_Output" Click="btn_Output_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -125,7 +125,7 @@
                         </Button>
                         
                         <!--Tồn kho-->
-                        <Button ToolTip="Inventory" Name="btn_Inventory" Click="btn_Inventory_Click">
+                        <Button ToolTip="Inventory" Name="btn_Inventory" Click="btn_Inventory_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -144,7 +144,7 @@
                         </Button>
 
                         <!--Bảng kê nhập hàng-->
-                        <Button ToolTip="Received docket" Name="btn_ReceivedDocket" Click="btn_ReceivedDocket_Click">
+                        <Button ToolTip="Received docket" Name="btn_ReceivedDocket" Click="btn_ReceivedDocket_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -164,7 +164,7 @@
 
 
                         <!--Bảng kê xuất hàng-->
-                        <Button ToolTip="Delivery slip" Name="btn_DeliverySlip" Click="btn_DeliverySlip_Click">
+                        <Button ToolTip="Delivery slip" Name="btn_DeliverySlip" Click="btn_DeliverySlip_Click" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -183,7 +183,7 @@
                         </Button>
 
                         <!--Thêm tài khoản nhân viên-->
-                        <Button ToolTip="Add Acount">
+                        <Button ToolTip="Add Acount" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -218,7 +218,7 @@
                     </Button>-->
 
                         <!--Tìm kiếm các phiếu nhập, xuất, mặt hàng bán chạy nhất-->
-                        <Button ToolTip="Search">
+                        <Button ToolTip="Search" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -237,7 +237,7 @@
                         </Button>
 
                         <!--Liên hệ với người làm phần mềm-->
-                        <Button ToolTip="About">
+                        <Button ToolTip="About" Background="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>

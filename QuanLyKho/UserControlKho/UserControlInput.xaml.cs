@@ -40,5 +40,11 @@ namespace QuanLyKho.UserControlKho
             QLKhoEntities search = new QLKhoEntities();
             Input.ItemsSource = search.sp_TimKiemPhieuNhapTheoSoChungTu(xx);
         }
+
+        private void Input_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object t = Input.SelectedItem;
+            Binding_Input.DataContext = t;
+        }
     }
 }

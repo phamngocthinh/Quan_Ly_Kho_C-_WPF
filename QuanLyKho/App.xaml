@@ -10,6 +10,23 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}" >
+                <Style.Triggers>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="0" >
+                        <Setter Property="Background" Value="Lavender" ></Setter>
+                        <Setter Property="Height" Value="33" ></Setter>
+                    </Trigger>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                        <Setter Property="Background" Value="SeaShell"></Setter>
+                        <Setter Property="Height" Value="33" ></Setter>
+
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#ffec8b"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

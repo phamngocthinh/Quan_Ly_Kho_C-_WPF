@@ -149,36 +149,14 @@
       <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
       <End Role="PHIEUXUATHANG" EntitySet="PHIEUXUATHANGs" />
     </AssociationSet>
-    <FunctionImport Name="sp_TimKiemPhieuXuatTheoSoChungTu" EntitySet="PHIEUXUATHANGs" ReturnType="Collection(QLKhoModel.PHIEUXUATHANG)">
-      <Parameter Name="sochungtu" Mode="In" Type="String" />
+    <FunctionImport Name="sp_AddGoods">
+      <Parameter Name="mahh" Mode="In" Type="String" />
+      <Parameter Name="tenhh" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_TimKiemThongTinPhieuNhapHang" ReturnType="Collection(QLKhoModel.sp_TimKiemThongTinPhieuNhapHang_Result)">
-      <Parameter Name="makh" Mode="In" Type="String" />
+    <FunctionImport Name="sp_DeleteGoods">
       <Parameter Name="mahh" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_TimKiemThongTinPhieuXuatHang" ReturnType="Collection(QLKhoModel.sp_TimKiemThongTinPhieuXuatHang_Result)">
-      <Parameter Name="makh" Mode="In" Type="String" />
-      <Parameter Name="mahh" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_XuatBangNhapHang" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHang_Result)">
-      <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
-      <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="sp_XuatBangNhapHangCoMaHH" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHangCoMaHH_Result)">
-      <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
-      <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
-      <Parameter Name="mahh" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_XuatBangXuatHang" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHang_Result)">
-      <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
-      <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="sp_XuatBangXuatHangCoMaHH" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHangCoMaHH_Result)">
-      <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
-      <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
-      <Parameter Name="mahh" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_TimKiemHangHoaTheoTenHH" EntitySet="HANGHOAs" ReturnType="Collection(QLKhoModel.HANGHOA)">
+    <FunctionImport Name="sp_TimKiemHangHoaTheoTenHH" ReturnType="Collection(QLKhoModel.sp_TimKiemHangHoaTheoTenHH_Result)">
       <Parameter Name="tenhh" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_TimKiemNhaCungCapTheoTenNhaCungCap" ReturnType="Collection(QLKhoModel.sp_TimKiemNhaCungCapTheoTenNhaCungCap_Result)">
@@ -187,76 +165,41 @@
     <FunctionImport Name="sp_TimKiemPhieuNhapTheoSoChungTu" ReturnType="Collection(QLKhoModel.sp_TimKiemPhieuNhapTheoSoChungTu_Result)">
       <Parameter Name="sochungtu" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_TimSoLuongTonCuaHangHoa" EntitySet="TONDAUKIs" ReturnType="Collection(QLKhoModel.TONDAUKI)">
-      <Parameter Name="mahh" Mode="In" Type="String" />
+    <FunctionImport Name="sp_TimKiemPhieuXuatTheoSoChungTu" ReturnType="Collection(QLKhoModel.sp_TimKiemPhieuXuatTheoSoChungTu_Result)">
+      <Parameter Name="sochungtu" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH" ReturnType="Collection(QLKhoModel.sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result)">
       <Parameter Name="tenhh" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_TimSoLuongTonCuaHangHoa" ReturnType="Collection(QLKhoModel.sp_TimSoLuongTonCuaHangHoa_Result)">
+      <Parameter Name="mahh" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_updateCus">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangNhapHang" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHang_Result)">
+      <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XuatBangXuatHang" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHang_Result)">
+      <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
+      <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_addCus">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_deleteCus">
+      <Parameter Name="makh" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="sp_TimKiemPhieuXuatTheoSoChungTu_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_TimKiemThongTinPhieuNhapHang_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_TimKiemThongTinPhieuXuatHang_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_XuatBangNhapHang_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_XuatBangNhapHangCoMaHH_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_XuatBangXuatHang_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_XuatBangXuatHangCoMaHH_Result">
-    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-    <Property Type="Int32" Name="SoLuong" Nullable="true" />
-    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-  </ComplexType>
   <ComplexType Name="sp_TimKiemHangHoaTheoTenHH_Result">
     <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
     <Property Type="String" Name="TenHH" Nullable="true" MaxLength="30" />
@@ -277,15 +220,42 @@
     <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
     <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="sp_TimSoLuongTonCuaHangHoa_Result">
+  <ComplexType Name="sp_TimKiemPhieuXuatTheoSoChungTu_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
     <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-    <Property Type="Int32" Name="SLTon" Nullable="true" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
     <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result">
     <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
     <Property Type="String" Name="TenHH" Nullable="true" MaxLength="30" />
     <Property Type="Int32" Name="SLTon" Nullable="true" />
     <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="sp_TimSoLuongTonCuaHangHoa_Result">
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="Int32" Name="SLTon" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangNhapHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XuatBangXuatHang_Result">
+    <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+    <Property Type="Int32" Name="SoLuong" Nullable="true" />
+    <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

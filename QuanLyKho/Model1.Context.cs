@@ -33,126 +33,35 @@ namespace QuanLyKho
         public virtual DbSet<PHIEUXUATHANG> PHIEUXUATHANGs { get; set; }
         public virtual DbSet<TONDAUKI> TONDAUKIs { get; set; }
     
-        public virtual ObjectResult<PHIEUXUATHANG> sp_TimKiemPhieuXuatTheoSoChungTu(string sochungtu)
+        public virtual int sp_AddGoods(string mahh, string tenhh)
         {
-            var sochungtuParameter = sochungtu != null ?
-                new ObjectParameter("sochungtu", sochungtu) :
-                new ObjectParameter("sochungtu", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHIEUXUATHANG>("sp_TimKiemPhieuXuatTheoSoChungTu", sochungtuParameter);
-        }
-    
-        public virtual ObjectResult<PHIEUXUATHANG> sp_TimKiemPhieuXuatTheoSoChungTu(string sochungtu, MergeOption mergeOption)
-        {
-            var sochungtuParameter = sochungtu != null ?
-                new ObjectParameter("sochungtu", sochungtu) :
-                new ObjectParameter("sochungtu", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PHIEUXUATHANG>("sp_TimKiemPhieuXuatTheoSoChungTu", mergeOption, sochungtuParameter);
-        }
-    
-        public virtual ObjectResult<sp_TimKiemThongTinPhieuNhapHang_Result> sp_TimKiemThongTinPhieuNhapHang(string makh, string mahh)
-        {
-            var makhParameter = makh != null ?
-                new ObjectParameter("makh", makh) :
-                new ObjectParameter("makh", typeof(string));
-    
             var mahhParameter = mahh != null ?
                 new ObjectParameter("mahh", mahh) :
                 new ObjectParameter("mahh", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemThongTinPhieuNhapHang_Result>("sp_TimKiemThongTinPhieuNhapHang", makhParameter, mahhParameter);
+            var tenhhParameter = tenhh != null ?
+                new ObjectParameter("tenhh", tenhh) :
+                new ObjectParameter("tenhh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AddGoods", mahhParameter, tenhhParameter);
         }
     
-        public virtual ObjectResult<sp_TimKiemThongTinPhieuXuatHang_Result> sp_TimKiemThongTinPhieuXuatHang(string makh, string mahh)
+        public virtual int sp_DeleteGoods(string mahh)
         {
-            var makhParameter = makh != null ?
-                new ObjectParameter("makh", makh) :
-                new ObjectParameter("makh", typeof(string));
-    
             var mahhParameter = mahh != null ?
                 new ObjectParameter("mahh", mahh) :
                 new ObjectParameter("mahh", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemThongTinPhieuXuatHang_Result>("sp_TimKiemThongTinPhieuXuatHang", makhParameter, mahhParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteGoods", mahhParameter);
         }
     
-        public virtual ObjectResult<sp_XuatBangNhapHang_Result> sp_XuatBangNhapHang(Nullable<System.DateTime> ngaynhaphang1, Nullable<System.DateTime> ngaynhaphang2)
-        {
-            var ngaynhaphang1Parameter = ngaynhaphang1.HasValue ?
-                new ObjectParameter("ngaynhaphang1", ngaynhaphang1) :
-                new ObjectParameter("ngaynhaphang1", typeof(System.DateTime));
-    
-            var ngaynhaphang2Parameter = ngaynhaphang2.HasValue ?
-                new ObjectParameter("ngaynhaphang2", ngaynhaphang2) :
-                new ObjectParameter("ngaynhaphang2", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangNhapHang_Result>("sp_XuatBangNhapHang", ngaynhaphang1Parameter, ngaynhaphang2Parameter);
-        }
-    
-        public virtual ObjectResult<sp_XuatBangNhapHangCoMaHH_Result> sp_XuatBangNhapHangCoMaHH(Nullable<System.DateTime> ngaynhaphang1, Nullable<System.DateTime> ngaynhaphang2, string mahh)
-        {
-            var ngaynhaphang1Parameter = ngaynhaphang1.HasValue ?
-                new ObjectParameter("ngaynhaphang1", ngaynhaphang1) :
-                new ObjectParameter("ngaynhaphang1", typeof(System.DateTime));
-    
-            var ngaynhaphang2Parameter = ngaynhaphang2.HasValue ?
-                new ObjectParameter("ngaynhaphang2", ngaynhaphang2) :
-                new ObjectParameter("ngaynhaphang2", typeof(System.DateTime));
-    
-            var mahhParameter = mahh != null ?
-                new ObjectParameter("mahh", mahh) :
-                new ObjectParameter("mahh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangNhapHangCoMaHH_Result>("sp_XuatBangNhapHangCoMaHH", ngaynhaphang1Parameter, ngaynhaphang2Parameter, mahhParameter);
-        }
-    
-        public virtual ObjectResult<sp_XuatBangXuatHang_Result> sp_XuatBangXuatHang(Nullable<System.DateTime> ngayxuathang1, Nullable<System.DateTime> ngayxuathang2)
-        {
-            var ngayxuathang1Parameter = ngayxuathang1.HasValue ?
-                new ObjectParameter("ngayxuathang1", ngayxuathang1) :
-                new ObjectParameter("ngayxuathang1", typeof(System.DateTime));
-    
-            var ngayxuathang2Parameter = ngayxuathang2.HasValue ?
-                new ObjectParameter("ngayxuathang2", ngayxuathang2) :
-                new ObjectParameter("ngayxuathang2", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangXuatHang_Result>("sp_XuatBangXuatHang", ngayxuathang1Parameter, ngayxuathang2Parameter);
-        }
-    
-        public virtual ObjectResult<sp_XuatBangXuatHangCoMaHH_Result> sp_XuatBangXuatHangCoMaHH(Nullable<System.DateTime> ngayxuathang1, Nullable<System.DateTime> ngayxuathang2, string mahh)
-        {
-            var ngayxuathang1Parameter = ngayxuathang1.HasValue ?
-                new ObjectParameter("ngayxuathang1", ngayxuathang1) :
-                new ObjectParameter("ngayxuathang1", typeof(System.DateTime));
-    
-            var ngayxuathang2Parameter = ngayxuathang2.HasValue ?
-                new ObjectParameter("ngayxuathang2", ngayxuathang2) :
-                new ObjectParameter("ngayxuathang2", typeof(System.DateTime));
-    
-            var mahhParameter = mahh != null ?
-                new ObjectParameter("mahh", mahh) :
-                new ObjectParameter("mahh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangXuatHangCoMaHH_Result>("sp_XuatBangXuatHangCoMaHH", ngayxuathang1Parameter, ngayxuathang2Parameter, mahhParameter);
-        }
-    
-        public virtual ObjectResult<HANGHOA> sp_TimKiemHangHoaTheoTenHH(string tenhh)
+        public virtual ObjectResult<sp_TimKiemHangHoaTheoTenHH_Result> sp_TimKiemHangHoaTheoTenHH(string tenhh)
         {
             var tenhhParameter = tenhh != null ?
                 new ObjectParameter("tenhh", tenhh) :
                 new ObjectParameter("tenhh", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HANGHOA>("sp_TimKiemHangHoaTheoTenHH", tenhhParameter);
-        }
-    
-        public virtual ObjectResult<HANGHOA> sp_TimKiemHangHoaTheoTenHH(string tenhh, MergeOption mergeOption)
-        {
-            var tenhhParameter = tenhh != null ?
-                new ObjectParameter("tenhh", tenhh) :
-                new ObjectParameter("tenhh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HANGHOA>("sp_TimKiemHangHoaTheoTenHH", mergeOption, tenhhParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemHangHoaTheoTenHH_Result>("sp_TimKiemHangHoaTheoTenHH", tenhhParameter);
         }
     
         public virtual ObjectResult<sp_TimKiemNhaCungCapTheoTenNhaCungCap_Result> sp_TimKiemNhaCungCapTheoTenNhaCungCap(string tenncc)
@@ -173,22 +82,13 @@ namespace QuanLyKho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemPhieuNhapTheoSoChungTu_Result>("sp_TimKiemPhieuNhapTheoSoChungTu", sochungtuParameter);
         }
     
-        public virtual ObjectResult<TONDAUKI> sp_TimSoLuongTonCuaHangHoa(string mahh)
+        public virtual ObjectResult<sp_TimKiemPhieuXuatTheoSoChungTu_Result> sp_TimKiemPhieuXuatTheoSoChungTu(string sochungtu)
         {
-            var mahhParameter = mahh != null ?
-                new ObjectParameter("mahh", mahh) :
-                new ObjectParameter("mahh", typeof(string));
+            var sochungtuParameter = sochungtu != null ?
+                new ObjectParameter("sochungtu", sochungtu) :
+                new ObjectParameter("sochungtu", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TONDAUKI>("sp_TimSoLuongTonCuaHangHoa", mahhParameter);
-        }
-    
-        public virtual ObjectResult<TONDAUKI> sp_TimSoLuongTonCuaHangHoa(string mahh, MergeOption mergeOption)
-        {
-            var mahhParameter = mahh != null ?
-                new ObjectParameter("mahh", mahh) :
-                new ObjectParameter("mahh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TONDAUKI>("sp_TimSoLuongTonCuaHangHoa", mergeOption, mahhParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemPhieuXuatTheoSoChungTu_Result>("sp_TimKiemPhieuXuatTheoSoChungTu", sochungtuParameter);
         }
     
         public virtual ObjectResult<sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result> sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH(string tenhh)
@@ -198,6 +98,100 @@ namespace QuanLyKho
                 new ObjectParameter("tenhh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result>("sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH", tenhhParameter);
+        }
+    
+        public virtual ObjectResult<sp_TimSoLuongTonCuaHangHoa_Result> sp_TimSoLuongTonCuaHangHoa(string mahh)
+        {
+            var mahhParameter = mahh != null ?
+                new ObjectParameter("mahh", mahh) :
+                new ObjectParameter("mahh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimSoLuongTonCuaHangHoa_Result>("sp_TimSoLuongTonCuaHangHoa", mahhParameter);
+        }
+    
+        public virtual int sp_updateCus(string makh, string tenkh, string sdt, string diachi, Nullable<System.DateTime> ngaysinh)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateCus", makhParameter, tenkhParameter, sdtParameter, diachiParameter, ngaysinhParameter);
+        }
+    
+        public virtual ObjectResult<sp_XuatBangNhapHang_Result> sp_XuatBangNhapHang(Nullable<System.DateTime> ngaynhaphang1, Nullable<System.DateTime> ngaynhaphang2)
+        {
+            var ngaynhaphang1Parameter = ngaynhaphang1.HasValue ?
+                new ObjectParameter("ngaynhaphang1", ngaynhaphang1) :
+                new ObjectParameter("ngaynhaphang1", typeof(System.DateTime));
+    
+            var ngaynhaphang2Parameter = ngaynhaphang2.HasValue ?
+                new ObjectParameter("ngaynhaphang2", ngaynhaphang2) :
+                new ObjectParameter("ngaynhaphang2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangNhapHang_Result>("sp_XuatBangNhapHang", ngaynhaphang1Parameter, ngaynhaphang2Parameter);
+        }
+    
+        public virtual ObjectResult<sp_XuatBangXuatHang_Result> sp_XuatBangXuatHang(Nullable<System.DateTime> ngayxuathang1, Nullable<System.DateTime> ngayxuathang2)
+        {
+            var ngayxuathang1Parameter = ngayxuathang1.HasValue ?
+                new ObjectParameter("ngayxuathang1", ngayxuathang1) :
+                new ObjectParameter("ngayxuathang1", typeof(System.DateTime));
+    
+            var ngayxuathang2Parameter = ngayxuathang2.HasValue ?
+                new ObjectParameter("ngayxuathang2", ngayxuathang2) :
+                new ObjectParameter("ngayxuathang2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XuatBangXuatHang_Result>("sp_XuatBangXuatHang", ngayxuathang1Parameter, ngayxuathang2Parameter);
+        }
+    
+        public virtual int sp_addCus(string makh, string tenkh, string sdt, string diachi, Nullable<System.DateTime> ngaysinh)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addCus", makhParameter, tenkhParameter, sdtParameter, diachiParameter, ngaysinhParameter);
+        }
+    
+        public virtual int sp_deleteCus(string makh)
+        {
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteCus", makhParameter);
         }
     }
 }

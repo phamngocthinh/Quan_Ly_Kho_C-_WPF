@@ -118,6 +118,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_addCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinh" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_AddGoods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahh" Type="varchar" Mode="In" />
+          <Parameter Name="tenhh" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_deleteCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteGoods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahh" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_TimKiemHangHoaTheoTenHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tenhh" Type="nvarchar" Mode="In" />
         </Function>
@@ -133,34 +150,23 @@
         <Function Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tenhh" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="sp_TimKiemThongTinPhieuNhapHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="makh" Type="varchar" Mode="In" />
-          <Parameter Name="mahh" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_TimKiemThongTinPhieuXuatHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="makh" Type="varchar" Mode="In" />
-          <Parameter Name="mahh" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="sp_TimSoLuongTonCuaHangHoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="mahh" Type="nvarchar" Mode="In" />
+          <Parameter Name="mahh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_updateCus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="varchar" Mode="In" />
+          <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinh" Type="date" Mode="In" />
         </Function>
         <Function Name="sp_XuatBangNhapHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ngaynhaphang1" Type="date" Mode="In" />
           <Parameter Name="ngaynhaphang2" Type="date" Mode="In" />
         </Function>
-        <Function Name="sp_XuatBangNhapHangCoMaHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ngaynhaphang1" Type="date" Mode="In" />
-          <Parameter Name="ngaynhaphang2" Type="date" Mode="In" />
-          <Parameter Name="mahh" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="sp_XuatBangXuatHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ngayxuathang1" Type="date" Mode="In" />
           <Parameter Name="ngayxuathang2" Type="date" Mode="In" />
-        </Function>
-        <Function Name="sp_XuatBangXuatHangCoMaHH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ngayxuathang1" Type="date" Mode="In" />
-          <Parameter Name="ngayxuathang2" Type="date" Mode="In" />
-          <Parameter Name="mahh" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="QLKhoModelStoreContainer">
           <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
@@ -342,36 +348,14 @@
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="PHIEUXUATHANG" EntitySet="PHIEUXUATHANGs" />
           </AssociationSet>
-          <FunctionImport Name="sp_TimKiemPhieuXuatTheoSoChungTu" EntitySet="PHIEUXUATHANGs" ReturnType="Collection(QLKhoModel.PHIEUXUATHANG)">
-          <Parameter Name="sochungtu" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_TimKiemThongTinPhieuNhapHang" ReturnType="Collection(QLKhoModel.sp_TimKiemThongTinPhieuNhapHang_Result)">
-            <Parameter Name="makh" Mode="In" Type="String" />
+          <FunctionImport Name="sp_AddGoods">
             <Parameter Name="mahh" Mode="In" Type="String" />
+            <Parameter Name="tenhh" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_TimKiemThongTinPhieuXuatHang" ReturnType="Collection(QLKhoModel.sp_TimKiemThongTinPhieuXuatHang_Result)">
-            <Parameter Name="makh" Mode="In" Type="String" />
-            <Parameter Name="mahh" Mode="In" Type="String" />
+          <FunctionImport Name="sp_DeleteGoods">
+          <Parameter Name="mahh" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_XuatBangNhapHang" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHang_Result)">
-            <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
-            <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XuatBangNhapHangCoMaHH" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHangCoMaHH_Result)">
-            <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
-            <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
-            <Parameter Name="mahh" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XuatBangXuatHang" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHang_Result)">
-            <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
-            <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XuatBangXuatHangCoMaHH" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHangCoMaHH_Result)">
-            <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
-            <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
-            <Parameter Name="mahh" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_TimKiemHangHoaTheoTenHH" EntitySet="HANGHOAs" ReturnType="Collection(QLKhoModel.HANGHOA)">
+          <FunctionImport Name="sp_TimKiemHangHoaTheoTenHH" ReturnType="Collection(QLKhoModel.sp_TimKiemHangHoaTheoTenHH_Result)">
           <Parameter Name="tenhh" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_TimKiemNhaCungCapTheoTenNhaCungCap" ReturnType="Collection(QLKhoModel.sp_TimKiemNhaCungCapTheoTenNhaCungCap_Result)">
@@ -380,76 +364,41 @@
           <FunctionImport Name="sp_TimKiemPhieuNhapTheoSoChungTu" ReturnType="Collection(QLKhoModel.sp_TimKiemPhieuNhapTheoSoChungTu_Result)">
           <Parameter Name="sochungtu" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_TimSoLuongTonCuaHangHoa" EntitySet="TONDAUKIs" ReturnType="Collection(QLKhoModel.TONDAUKI)">
-          <Parameter Name="mahh" Mode="In" Type="String" />
+          <FunctionImport Name="sp_TimKiemPhieuXuatTheoSoChungTu" ReturnType="Collection(QLKhoModel.sp_TimKiemPhieuXuatTheoSoChungTu_Result)">
+          <Parameter Name="sochungtu" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH" ReturnType="Collection(QLKhoModel.sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result)">
           <Parameter Name="tenhh" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_TimSoLuongTonCuaHangHoa" ReturnType="Collection(QLKhoModel.sp_TimSoLuongTonCuaHangHoa_Result)">
+          <Parameter Name="mahh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_updateCus">
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XuatBangNhapHang" ReturnType="Collection(QLKhoModel.sp_XuatBangNhapHang_Result)">
+            <Parameter Name="ngaynhaphang1" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaynhaphang2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XuatBangXuatHang" ReturnType="Collection(QLKhoModel.sp_XuatBangXuatHang_Result)">
+            <Parameter Name="ngayxuathang1" Mode="In" Type="DateTime" />
+            <Parameter Name="ngayxuathang2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_addCus">
+            <Parameter Name="makh" Mode="In" Type="String" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_deleteCus">
+            <Parameter Name="makh" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_TimKiemPhieuXuatTheoSoChungTu_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_TimKiemThongTinPhieuNhapHang_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_TimKiemThongTinPhieuXuatHang_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_XuatBangNhapHang_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_XuatBangNhapHangCoMaHH_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_XuatBangXuatHang_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_XuatBangXuatHangCoMaHH_Result">
-          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
-          <Property Type="Int32" Name="SoLuong" Nullable="true" />
-          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
-          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="sp_TimKiemHangHoaTheoTenHH_Result">
           <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
           <Property Type="String" Name="TenHH" Nullable="true" MaxLength="30" />
@@ -470,16 +419,43 @@
           <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
           <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="sp_TimSoLuongTonCuaHangHoa_Result">
+        <ComplexType Name="sp_TimKiemPhieuXuatTheoSoChungTu_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
           <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
-          <Property Type="Int32" Name="SLTon" Nullable="true" />
+          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+          <Property Type="Int32" Name="SoLuong" Nullable="true" />
           <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH_Result">
           <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
           <Property Type="String" Name="TenHH" Nullable="true" MaxLength="30" />
           <Property Type="Int32" Name="SLTon" Nullable="true" />
           <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="sp_TimSoLuongTonCuaHangHoa_Result">
+          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="SLTon" Nullable="true" />
+          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="sp_XuatBangNhapHang_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="NgayNhap" Nullable="true" />
+          <Property Type="Int32" Name="SoLuong" Nullable="true" />
+          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_XuatBangXuatHang_Result">
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="MaHH" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="SoChungTu" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="NgayXuat" Nullable="true" />
+          <Property Type="Int32" Name="SoLuong" Nullable="true" />
+          <Property Type="Decimal" Name="GiaTien" Nullable="true" Precision="10" Scale="3" />
+          <Property Type="String" Name="DienGiai" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -541,87 +517,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_TimKiemPhieuXuatTheoSoChungTu" FunctionName="QLKhoModel.Store.sp_TimKiemPhieuXuatTheoSoChungTu">
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_TimKiemThongTinPhieuNhapHang" FunctionName="QLKhoModel.Store.sp_TimKiemThongTinPhieuNhapHang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_TimKiemThongTinPhieuNhapHang_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_TimKiemThongTinPhieuXuatHang" FunctionName="QLKhoModel.Store.sp_TimKiemThongTinPhieuXuatHang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_TimKiemThongTinPhieuXuatHang_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_XuatBangNhapHang" FunctionName="QLKhoModel.Store.sp_XuatBangNhapHang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangNhapHang_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_XuatBangNhapHangCoMaHH" FunctionName="QLKhoModel.Store.sp_XuatBangNhapHangCoMaHH">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangNhapHangCoMaHH_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_XuatBangXuatHang" FunctionName="QLKhoModel.Store.sp_XuatBangXuatHang">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangXuatHang_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_XuatBangXuatHangCoMaHH" FunctionName="QLKhoModel.Store.sp_XuatBangXuatHangCoMaHH">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangXuatHangCoMaHH_Result">
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
-                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
-                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AddGoods" FunctionName="QLKhoModel.Store.sp_AddGoods" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteGoods" FunctionName="QLKhoModel.Store.sp_DeleteGoods" />
           <FunctionImportMapping FunctionImportName="sp_TimKiemHangHoaTheoTenHH" FunctionName="QLKhoModel.Store.sp_TimKiemHangHoaTheoTenHH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhoModel.sp_TimKiemHangHoaTheoTenHH_Result">
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_TimKiemNhaCungCapTheoTenNhaCungCap" FunctionName="QLKhoModel.Store.sp_TimKiemNhaCungCapTheoTenNhaCungCap">
             <ResultMapping>
@@ -647,7 +551,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_TimSoLuongTonCuaHangHoa" FunctionName="QLKhoModel.Store.sp_TimSoLuongTonCuaHangHoa">
+          <FunctionImportMapping FunctionImportName="sp_TimKiemPhieuXuatTheoSoChungTu" FunctionName="QLKhoModel.Store.sp_TimKiemPhieuXuatTheoSoChungTu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhoModel.sp_TimKiemPhieuXuatTheoSoChungTu_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH" FunctionName="QLKhoModel.Store.sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH">
             <ResultMapping>
@@ -659,6 +574,44 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TimSoLuongTonCuaHangHoa" FunctionName="QLKhoModel.Store.sp_TimSoLuongTonCuaHangHoa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhoModel.sp_TimSoLuongTonCuaHangHoa_Result">
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="SLTon" ColumnName="SLTon" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_updateCus" FunctionName="QLKhoModel.Store.sp_updateCus" />
+          <FunctionImportMapping FunctionImportName="sp_XuatBangNhapHang" FunctionName="QLKhoModel.Store.sp_XuatBangNhapHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangNhapHang_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_XuatBangXuatHang" FunctionName="QLKhoModel.Store.sp_XuatBangXuatHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhoModel.sp_XuatBangXuatHang_Result">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="SoChungTu" ColumnName="SoChungTu" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="DienGiai" ColumnName="DienGiai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_addCus" FunctionName="QLKhoModel.Store.sp_addCus" />
+          <FunctionImportMapping FunctionImportName="sp_deleteCus" FunctionName="QLKhoModel.Store.sp_deleteCus" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

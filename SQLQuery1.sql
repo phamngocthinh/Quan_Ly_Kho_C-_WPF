@@ -266,6 +266,62 @@ GO
 EXEC sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH 'Bia'
 DROP PROCEDURE sp_TimKiemSoLuongTonCuaHangHoaTheoTenHH
 
+-----xóa hàng hóa---
+CREATE PROCEDURE sp_DeleteGoods @mahh varchar(6)
+AS
+	DELETE FROM dbo.TONDAUKI WHERE MaHH = @mahh
+	DELETE FROM dbo.PHIEUNHAPHANG WHERE MaHH = @mahh
+	DELETE FROM dbo.PHIEUXUATHANG WHERE MaHH = @mahh
+	DELETE FROM dbo.HANGHOA WHERE MaHH = @mahh
+
+	
+GO 
+
+EXEC sp_DeleteGoods @mahh ='123'
+
+
+
+--DROP PROCEDURE sp_DeleteGoods
+
+------thêm hàng hóa
+CREATE PROCEDURE sp_AddGoods @mahh VARCHAR(6),@tenhh NVARCHAR(30)
+AS 
+	INSERT INTO dbo.HANGHOA
+	VALUES(@mahh,@tenhh )
+GO
+EXEC sp_AddGoods @mahh = 'MHH114', @tenhh = N'Bánh quế'
+
+--Thêm Nhà cung cấp
+CREATE procedure sp_addCus @makh VARCHAR(5), @tenkh NVARCHAR(30),@sdt VARCHAR(12),@diachi NVARCHAR(50),@ngaysinh DATE
+as 
+	INSERT INTO dbo.KHACHHANG
+	VALUES(@makh, @tenkh, @sdt, @diachi, @ngaysinh )
+go
+
+exec sp_addCus @makh ='KH005', @tenkh= N'Trương Thị Thùy Trang', @sdt='0935527480', @diachi=N'Tịnh Hòa, TP Quảng Ngãi', @ngaysinh ='12/04/1973' 
+
+--xóa nhà cung cấp
+create procedure sp_deleteCus @makh varchar(5)
+as
+	
+	DELETE FROM dbo.PHIEUNHAPHANG WHERE MaKH = @makh
+	DELETE FROM dbo.PHIEUXUATHANG WHERE MaKH = @makh
+	DELETE FROM dbo.KHACHHANG WHERE MaKH = @makh
+go
+exec sp_deleteCus @makh = ''
+
+
+--sửa nhà cung cấp
+create procedure sp_updateCus @makh VARCHAR(5), @tenkh NVARCHAR(30),@sdt VARCHAR(12),@diachi NVARCHAR(50),@ngaysinh DATE
+as
+	update KHACHHANG
+	set TenKH = @tenkh, SDT = @sdt, DiaChi = @diachi, NgaySinh = @ngaysinh
+	where MaKH= @makh
+go
+
+exec sp_updateCus @makh='KH001', @tenkh =N'Phạm Ngọc Thịnh',@sdt ='01633716500' ,@diachi =N'78/9 An Dương Vương',@ngaysinh ='12/04/1997'
+
+
 
 
 -------------------------------------------------------------------------------------------------------------------------

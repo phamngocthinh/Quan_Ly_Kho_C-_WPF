@@ -48,7 +48,6 @@ namespace QuanLyKho.UserControlKho
             }
         }
 
-
         
     }
 }

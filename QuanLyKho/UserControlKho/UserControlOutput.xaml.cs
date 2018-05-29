@@ -47,6 +47,10 @@ namespace QuanLyKho.UserControlKho
 
         }
 
-        
+        private void Output_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object t = Output.SelectedItem;
+            Binding_Output.DataContext = t;
+        }
     }
 }
